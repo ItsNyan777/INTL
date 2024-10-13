@@ -1,0 +1,10 @@
+body {
+  width: 100%;
+  height: 100%;
+  background-repeat:no-repeat;
+  background-color:#100e21;
+}
+p {
+  color:white;
+  font-family:Century Gothic;
+}

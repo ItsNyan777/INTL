@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INTL</title>
+    <title>Juego de Reacción</title>
     <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/png" href="https://u.cubeupload.com/ItsNyan777/download2.png">
 </head>
 <body>
-<script>
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        window.location.href = 'mobile-error.html';
-    }
-</script>
-    <div class="navbar">
-        <a href="index.html">Inicio</a>
-        <a href="search.html">Buscar</a>
-        <a href="error404.html">Sugerencias</a>
-        <a href="error404.html">Contacto</a>
+    <div class="container">
+        <div class="player" id="player1">
+            <h2>Jugador 1</h2>
+            <p>La tecla <span>Q</span></p>
+        </div>
+        <div class="center">
+            <div class="bulb" id="bulb"></div>
+            <div class="counter" id="counter">0</div>
+            <button id="startButton">Iniciar Juego</button>
+        </div>
+        <div class="player" id="player2">
+            <h2>Jugador 2</h2>
+            <p>La tecla <span>P</span></p>
+        </div>
     </div>
-<p class="text"><strong>INTL</strong><br>CUADRO DE PRUEBA
-</p>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -3,6 +3,7 @@ const counter = document.getElementById('counter');
 const startButton = document.getElementById('startButton');
 const player1 = document.getElementById('player1');
 const player2 = document.getElementById('player2');
+const audio = document.getElementById('audio');
 
 let gameStarted = false;
 let maxNumber = 15; // Valor máximo del contador
@@ -20,8 +21,8 @@ function startGame() {
     player1.classList.remove('winner');
     player2.classList.remove('winner');
 
-    // Generar un tiempo aleatorio entre 1 y maxNumber segundos
-    const randomTime = Math.floor(Math.random() * maxNumber * 1000) + 1000;
+    // Reproducir el audio
+    audio.play();
 
     // Mostrar números aleatorios en el contador
     countdownInterval = setInterval(() => {
@@ -29,11 +30,23 @@ function startGame() {
         counter.textContent = randomNumber;
 
         if (randomNumber === 0) {
-            clearInterval(countdownInterval);
-            bulb.style.backgroundColor = '#4CAF50'; // Cambiar a verde
-            document.addEventListener('keydown', handleKeyPress); // Escuchar teclas
+            endCountdown();
         }
     }, 1000); // Cambiar el número cada segundo
+
+    // Si el audio termina y el contador no es 0, forzar el contador a 0
+    audio.addEventListener('ended', () => {
+        if (counter.textContent !== '0') {
+            counter.textContent = '0';
+            endCountdown();
+        }
+    });
+}
+
+function endCountdown() {
+    clearInterval(countdownInterval); // Detener el contador
+    bulb.style.backgroundColor = '#4CAF50'; // Cambiar a verde
+    document.addEventListener('keydown', handleKeyPress); // Escuchar teclas
 }
 
 function handleKeyPress(event) {
@@ -49,5 +62,6 @@ function handleKeyPress(event) {
 function endGame() {
     document.removeEventListener('keydown', handleKeyPress); // Dejar de escuchar teclas
     gameStarted = false;
-    clearInterval(countdownInterval); // Detener el contador
+    audio.pause(); // Detener el audio
+    audio.currentTime = 0; // Reiniciar el audio
 }

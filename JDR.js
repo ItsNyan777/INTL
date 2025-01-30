@@ -3,7 +3,10 @@ const counter = document.getElementById('counter');
 const startButton = document.getElementById('startButton');
 const player1 = document.getElementById('player1');
 const player2 = document.getElementById('player2');
-const audio = document.getElementById('audio');
+const audioInicio = document.getElementById('audioInicio');
+const audioGanaJugador1 = document.getElementById('audioGanaJugador1');
+const audioGanaJugador2 = document.getElementById('audioGanaJugador2');
+const audioPull = document.getElementById('audioPull'); // Nuevo audio
 
 let gameStarted = false;
 let maxNumber = 15; // Valor máximo del contador
@@ -21,8 +24,8 @@ function startGame() {
     player1.classList.remove('winner');
     player2.classList.remove('winner');
 
-    // Reproducir el audio
-    audio.play();
+    // Reproducir el audio de inicio
+    audioInicio.play();
 
     // Mostrar números aleatorios en el contador
     countdownInterval = setInterval(() => {
@@ -34,8 +37,8 @@ function startGame() {
         }
     }, 1000); // Cambiar el número cada segundo
 
-    // Si el audio termina y el contador no es 0, forzar el contador a 0
-    audio.addEventListener('ended', () => {
+    // Si el audio de inicio termina y el contador no es 0, forzar el contador a 0
+    audioInicio.addEventListener('ended', () => {
         if (counter.textContent !== '0') {
             counter.textContent = '0';
             endCountdown();
@@ -51,10 +54,14 @@ function endCountdown() {
 
 function handleKeyPress(event) {
     if (event.key === 'q' || event.key === 'Q') {
+        audioPull.play(); // Reproducir el audio "Pull"
         player1.classList.add('winner');
+        audioGanaJugador1.play(); // Reproducir audio de victoria del Jugador 1
         endGame();
     } else if (event.key === 'p' || event.key === 'P') {
+        audioPull.play(); // Reproducir el audio "Pull"
         player2.classList.add('winner');
+        audioGanaJugador2.play(); // Reproducir audio de victoria del Jugador 2
         endGame();
     }
 }
@@ -62,6 +69,6 @@ function handleKeyPress(event) {
 function endGame() {
     document.removeEventListener('keydown', handleKeyPress); // Dejar de escuchar teclas
     gameStarted = false;
-    audio.pause(); // Detener el audio
-    audio.currentTime = 0; // Reiniciar el audio
+    audioInicio.pause(); // Detener el audio de inicio
+    audioInicio.currentTime = 0; // Reiniciar el audio de inicio
 }

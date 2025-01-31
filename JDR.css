@@ -5,10 +5,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Usamos min-height en lugar de height */
+    min-height: 100vh; /* Usamos min-height para ocupar toda la altura */
     background-color: #121212;
     color: #ffffff;
     font-family: 'Arial', sans-serif;
+    position: relative; /* Necesario para el header fijo */
 }
 
 /* Header */
@@ -102,6 +103,10 @@ header.minimizado nav button {
     width: 80%;
     max-width: 800px;
     margin-top: 100px; /* Espacio para el header */
+    position: absolute; /* Posicionamiento absoluto para centrado */
+    top: 50%; /* Centrado vertical */
+    left: 50%; /* Centrado horizontal */
+    transform: translate(-50%, -50%); /* Ajuste fino para centrado */
 }
 
 /* Jugadores */

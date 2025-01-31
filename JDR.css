@@ -1,3 +1,25 @@
+/* Estilos para los enlaces del header */
+header a {
+    text-decoration: none; /* Quitar subrayado */
+    color: inherit; /* Heredar el color del texto */
+}
+
+/* Estilos para los botones de navegación */
+.nav-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 10px 15px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.nav-btn:hover {
+    color: #ffcc00;
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo al hacer hover */
+}
 /* Estilos generales */
 body {
     margin: 0;

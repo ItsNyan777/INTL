@@ -23,6 +23,21 @@ header {
     transition: all 0.3s ease;
 }
 
+/* Contenedor del logo y el nombre */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre el logo y el nombre */
+}
+
+/* Logo */
+.logo {
+    width: 40px; /* Tamaño del logo */
+    height: 40px;
+    border-radius: 50%; /* Forma circular */
+}
+
+/* Nombre "Pibik" */
 header h1 {
     font-size: 2em;
     margin: 0;
@@ -30,12 +45,18 @@ header h1 {
     color: #ffffff;
 }
 
+/* Botones de navegación */
+header nav {
+    display: flex;
+    gap: 20px; /* Espacio entre botones */
+    margin-right: 100px; /* Margen derecho de 10 cm aprox */
+}
+
 header nav button {
     background: none;
     border: none;
     color: #ffffff;
     font-size: 1em;
-    margin: 0 10px;
     cursor: pointer;
     transition: color 0.3s ease;
 }
@@ -52,15 +73,23 @@ header.minimizado {
     padding: 10px;
 }
 
+header.minimizado .logo-container {
+    flex-direction: column;
+    gap: 5px;
+}
+
 header.minimizado h1 {
     display: none;
+}
+
+header.minimizado nav {
+    margin-right: 0; /* Eliminar margen derecho en modo minimizado */
 }
 
 header.minimizado nav button {
     margin: 5px 0;
     font-size: 0.8em;
 }
-
 /* Sección de propósito */
 #proposito {
     padding: 100px 20px 20px;

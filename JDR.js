@@ -6,11 +6,21 @@ const player2 = document.getElementById('player2');
 const audioInicio = document.getElementById('audioInicio');
 const audioGanaJugador1 = document.getElementById('audioGanaJugador1');
 const audioGanaJugador2 = document.getElementById('audioGanaJugador2');
-const audioPull = document.getElementById('audioPull'); // Nuevo audio
+const audioPull = document.getElementById('audioPull');
 
 let gameStarted = false;
 let maxNumber = 15; // Valor máximo del contador
 let countdownInterval;
+
+// Minimizar header al desplazar
+window.addEventListener('scroll', () => {
+    const header = document.getElementById('header');
+    if (window.scrollY > 100) {
+        header.classList.add('minimizado');
+    } else {
+        header.classList.remove('minimizado');
+    }
+});
 
 startButton.addEventListener('click', startGame);
 
